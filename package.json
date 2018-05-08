@@ -1,0 +1,63 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "description": "My portfolio website, includes blogging and other shit",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MidgetJake/Portfolio.git"
+  },
+  "author": "Jake Barter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MidgetJake/Portfolio/issues"
+  },
+  "homepage": "https://github.com/MidgetJake/Portfolio#readme",
+  "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "classnames": "^2.2.5",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "dependable": "^1.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-force-ssl": "^0.3.2",
+    "express-promise-router": "^3.0.2",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.1.2",
+    "lodash": "^4.17.10",
+    "material-ui": "^1.0.0-beta.45",
+    "mdi-react": "^3.3.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "ejs-loader": "^0.3.1",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jscs": "^3.0.7",
+    "svg-react-loader": "^0.4.5",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.8.0",
+    "webpack-cli": "^2.1.3"
+  }
+}
