@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { muiTheme } from 'Styles/Theme';
 
-import LandingPage from 'Pages/LandingPage';
+import LandingPage from 'Pages/LandingPage/index';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 class App extends React.Component {

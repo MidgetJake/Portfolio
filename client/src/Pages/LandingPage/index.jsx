@@ -2,7 +2,7 @@ import React from 'react';
 import withStyle from '@material-ui/core/styles/withStyles';
 import classnames from 'classnames';
 
-import LandingStyle from 'Styles/Pages/LandingPage';
+import LandingStyle from './style';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
@@ -14,6 +14,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Button from '@material-ui/core/Button';
 import Player from 'react-player';
+import Breaker from 'Components/Section/Breaker/index';
 
 // Icons
 import JSIcon from 'mdi-react/LanguageJavascriptIcon';
@@ -40,7 +41,7 @@ import SnowTrailVideo from 'Videos/snowtrail.mp4';
 import BackImage from 'Images/mountainBackground.jpg';
 
 const tiledata = [
-        {
+    {
         img: SnowTrailVideo,
         title: 'Snow trail shader. Made with Unity',
         featured: false,
@@ -70,9 +71,11 @@ class LandingPage extends React.Component {
                     </div>
                 </div>
                 <Card className={classes.contentPaper}>
-                    <Typography variant={'display3'} align={'center'} style={{ color: '#222' }}>
-                        What I can do
-                    </Typography>
+                    <Breaker>
+                        <Typography variant={'display3'} align={'center'} style={{ color: '#222' }}>
+                            What I can do
+                        </Typography>
+                    </Breaker>
                     <Grid container className={classes.skillsGrid} spacing={24}>
                         <Grid item>
                             <Card className={classes.skillCard}>
@@ -212,9 +215,11 @@ class LandingPage extends React.Component {
                     </Grid>
                 </Card>
                 <Card className={classnames(classes.contentPaper, classes.darkBack)} elevation={0}>
-                    <Typography variant={'display3'} align={'center'} style={{ color: '#fff', marginBottom: 13 }}>
-                        What I've done
-                    </Typography>
+                    <Breaker colour={'#222'} style={{ marginBottom: 25 }}>
+                        <Typography variant={'display3'} align={'center'} style={{ color: '#fff', marginBottom: 13 }}>
+                            What I've done
+                        </Typography>
+                    </Breaker>
                     <GridList cellHeight={400} spacing={1} className={classes.gridList} cols={3}>
                         {tiledata.map(tile => (
                             <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={1}>

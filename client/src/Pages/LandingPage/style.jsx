@@ -4,8 +4,11 @@ const LandingStyle = theme => ({
         height: '100vh',
         alignItems: 'center',
         justifyContent: 'center',
-        maxHeight: 1030,
+        maxHeight: '80vh',
         overflow: 'hidden',
+        [theme.breakpoints.down(1200)]: {
+            maxHeight: 'unset',
+        },
     },
     headerImage: {
         filter: 'blur(10px)',
@@ -13,19 +16,31 @@ const LandingStyle = theme => ({
         top: -15,
         left: -15,
         width: 'calc(100vw + 30px)',
+        minHeight: 'calc(100% + 30px)',
         height: 'auto',
         zIndex: -1,
         maxHeight: 1050,
+        [theme.breakpoints.down(1900)]: {
+            width: 'auto',
+            minWidth: 'calc(100vw + 30px)',
+            height: 'calc(100vh + 30px)',
+        },
+        [theme.breakpoints.down(1200)]: {
+            height: 'calc(100vh + 30px)',
+        },
     },
     headerText: {
         position: 'absolute',
         top: '40%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+        [theme.breakpoints.down(1200)]: {
+            top: '50%',
+        },
     },
     contentPaper: {
-        background: '#fff',
-        padding: 25,
+        background: '#999',
+        paddingBottom: 25,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
