@@ -31,7 +31,7 @@ dependencies.resolve(function(_, main) {
 
         //database.setupDB();
 
-        server.listen(80, function(...args) {
+        server.listen(8080, function(...args) {
             console.log('Listening on port 80');
         });
     }

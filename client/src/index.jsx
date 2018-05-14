@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import { muiTheme } from 'Styles/Theme';
 
 import LandingPage from 'Pages/LandingPage';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 class App extends React.Component {
     render() {

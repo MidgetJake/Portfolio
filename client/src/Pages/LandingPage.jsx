@@ -1,20 +1,19 @@
 import React from 'react';
-import withStyle from 'material-ui/styles/withStyles';
+import withStyle from '@material-ui/core/styles/withStyles';
 import classnames from 'classnames';
 
 import LandingStyle from 'Styles/Pages/LandingPage';
-import Typography from 'material-ui/Typography';
-import Paper from 'material-ui/Paper';
-import Card from 'material-ui/Card';
-import Grid from 'material-ui/Grid';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
-import ListItemText from 'material-ui/List/ListItemText';
-import Avatar from'material-ui/Avatar';
-import GridList from 'material-ui/GridList/GridList';
-import GridListTile from 'material-ui/GridList/GridListTile';
-import GridListTileBar from 'material-ui/GridList/GridListTileBar';
-import Button from 'material-ui/Button';
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from'@material-ui/core/Avatar';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import Button from '@material-ui/core/Button';
+import Player from 'react-player';
 
 // Icons
 import JSIcon from 'mdi-react/LanguageJavascriptIcon';
@@ -30,51 +29,27 @@ import GitIcon from 'mdi-react/GitIcon';
 import UnityIcon from 'mdi-react/UnityIcon';
 import UnrealIcon from 'Images/unreal.svg';
 import DatabaseIcon from 'mdi-react/DatabaseIcon';
-import PHPIcon from 'mdi-react/LanguagePhpIcon';
 import MarkerIcon from 'mdi-react/MapMarkerIcon';
 import CameraIcon from 'mdi-react/CameraIcon';
+import ShaderIcon from 'mdi-react/SpotlightBeamIcon';
+import JetBrainsIcon from 'Images/jetbrains.svg';
+import VSIcon from 'mdi-react/VisualstudioIcon';
+
+import SnowTrailVideo from 'Videos/snowtrail.mp4';
 
 import BackImage from 'Images/mountainBackground.jpg';
 
 const tiledata = [
-    {
-        img: BackImage,
-        title: 'Image',
-        featured: true,
-    },
-    {
-        img: BackImage,
-        title: 'Image',
+        {
+        img: SnowTrailVideo,
+        title: 'Snow trail shader. Made with Unity',
         featured: false,
-    },
-    {
-        img: BackImage,
-        title: 'Image',
-        featured: false,
-    },
-    {
-        img: BackImage,
-        title: 'Image',
-        featured: false,
-    },
-    {
-        img: BackImage,
-        title: 'Image',
-        featured: false,
-    },
-    {
-        img: BackImage,
-        title: 'Image',
-        featured: false,
-    },
-    {
-        img: BackImage,
-        title: 'Image',
-        featured: true,
+        video: true,
     },
 ];
 
 class LandingPage extends React.Component {
+
     render() {
         const { classes } = this.props;
 
@@ -82,7 +57,7 @@ class LandingPage extends React.Component {
             <div style={{ overflow: 'hidden' }}>
                 <div className={classes.header}>
                     <img src={BackImage} className={classes.headerImage}/>
-                    <div>
+                    <div className={classes.headerText}>
                         <Typography variant={'display4'} align={'center'} style={{ color: '#fff' }}>
                             Hi,
                         </Typography>
@@ -90,11 +65,11 @@ class LandingPage extends React.Component {
                             I'm Jake Barter
                         </Typography>
                         <Typography variant={'subheading'} align={'center'} style={{ color: '#fff' }}>
-                            I'm a programmer that makes things
+                            I do web stuff and make games
                         </Typography>
                     </div>
                 </div>
-                <Paper className={classes.contentPaper}>
+                <Card className={classes.contentPaper}>
                     <Typography variant={'display3'} align={'center'} style={{ color: '#222' }}>
                         What I can do
                     </Typography>
@@ -136,12 +111,6 @@ class LandingPage extends React.Component {
                                         <ListItemText primary="PostgreSQL" secondary="Know my way around" />
                                     </ListItem>
                                     <ListItem>
-                                        <Avatar style={{ background: '#6181b6' }}>
-                                            <PHPIcon color={'#fff'} />
-                                        </Avatar>
-                                        <ListItemText primary="PHP" secondary="Know my way around" />
-                                    </ListItem>
-                                    <ListItem>
                                         <Avatar style={{ background: '#007ac3' }}>
                                             <CPPIcon color={'#fff'} />
                                         </Avatar>
@@ -175,10 +144,16 @@ class LandingPage extends React.Component {
                                         <ListItemText primary="React" secondary="1+ Years" />
                                     </ListItem>
                                     <ListItem>
+                                        <Avatar style={{ background: '#444444' }}>
+                                            <ShaderIcon color={'#ffffff'} />
+                                        </Avatar>
+                                        <ListItemText primary="Unity Shader" secondary="Basic Level" />
+                                    </ListItem>
+                                    <ListItem>
                                         <Avatar style={{ background: '#2196f3' }}>
                                             <MaterialIcon color={'#ffffff'} />
                                         </Avatar>
-                                        <ListItemText primary="Material UI" secondary="1> Years" />
+                                        <ListItemText primary="Material UI" secondary="React/Unity libraries" />
                                     </ListItem>
                                     <ListItem>
                                         <Avatar style={{ background: '#444444' }}>
@@ -215,16 +190,28 @@ class LandingPage extends React.Component {
                                     </ListItem>
                                     <ListItem>
                                         <Avatar style={{ background: '#444444' }}>
+                                            <JetBrainsIcon/>
+                                        </Avatar>
+                                        <ListItemText primary="JetBrains Software" secondary="WebStorm, PyCharm, etc" />
+                                    </ListItem>
+                                    <ListItem>
+                                        <Avatar style={{ background: '#444444' }}>
                                             <CameraIcon color={'#fff'} />
                                         </Avatar>
                                         <ListItemText primary="Photoshop" secondary="Intermediate" />
+                                    </ListItem>
+                                    <ListItem>
+                                        <Avatar style={{ background: '#68217a' }}>
+                                            <VSIcon color={'#fff'} />
+                                        </Avatar>
+                                        <ListItemText primary="Visual Studio" secondary="With Unity (C#)" />
                                     </ListItem>
                                 </List>
                             </Card>
                         </Grid>
                     </Grid>
-                </Paper>
-                <Paper className={classnames(classes.contentPaper, classes.darkBack)}>
+                </Card>
+                <Card className={classnames(classes.contentPaper, classes.darkBack)} elevation={0}>
                     <Typography variant={'display3'} align={'center'} style={{ color: '#fff', marginBottom: 13 }}>
                         What I've done
                     </Typography>
@@ -234,17 +221,15 @@ class LandingPage extends React.Component {
                                 <Button className={classes.tileButton}>
                                     {tile.title}
                                 </Button>
-                                <img src={tile.img} alt={tile.title} />
-                                {/*<GridListTileBar
-                                    title={tile.title}
-                                    titlePosition="top"
-                                    actionPosition="left"
-                                    className={classes.titleBar}
-                                />*/}
+                                {tile.video ? (
+                                    <Player url={tile.img} playing loop volume={0} width={'auto'} height={'100%'}/>
+                                ) : (
+                                    <img src={tile.img} alt={tile.title} />
+                                )}
                             </GridListTile>
                         ))}
                     </GridList>
-                </Paper>
+                </Card>
             </div>
         );
     };

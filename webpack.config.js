@@ -40,6 +40,22 @@ const config = {
                 },
             },
             {
+                test: /\.mp4$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/media/[name].[hash:8].[ext]',
+                    mimetype: 'video/mp4',
+                },
+            },
+            {
+                test: /\.webm$/,
+                loader: 'url-loader',
+                options: {
+                    name: 'static/media/[name].[hash:8].[ext]',
+                },
+            },
+            {
                 test: /\.svg$/,
                 exclude: /node_modules/,
                 loader: 'svg-react-loader',

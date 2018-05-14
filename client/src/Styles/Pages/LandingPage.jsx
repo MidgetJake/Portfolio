@@ -2,7 +2,6 @@ const LandingStyle = theme => ({
     header: {
         width: '100vw',
         height: '100vh',
-        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         maxHeight: 1030,
@@ -10,13 +9,19 @@ const LandingStyle = theme => ({
     },
     headerImage: {
         filter: 'blur(10px)',
-        position: 'absolute',
+        position: 'relative',
         top: -15,
         left: -15,
         width: 'calc(100vw + 30px)',
         height: 'auto',
         zIndex: -1,
         maxHeight: 1050,
+    },
+    headerText: {
+        position: 'absolute',
+        top: '40%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
     },
     contentPaper: {
         background: '#fff',
