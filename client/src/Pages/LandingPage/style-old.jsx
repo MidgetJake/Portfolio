@@ -1,13 +1,11 @@
-export default theme => ({
+const LandingStyle = theme => ({
     header: {
         width: '100vw',
         height: '100vh',
-        maxHeight: '40vh',
         alignItems: 'center',
         justifyContent: 'center',
+        maxHeight: '80vh',
         overflow: 'hidden',
-        position: 'absolute',
-        boxShadow: '0 3px 12px rgba(0, 0, 0, 0.5)',
         [theme.breakpoints.down(1200)]: {
             maxHeight: 'unset',
         },
@@ -31,43 +29,44 @@ export default theme => ({
             height: 'calc(100vh + 30px)',
         },
     },
-
-    content: {
-        marginTop: 300,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-    },
-    avatar: {
-        width: 200,
-        height: 200,
-        background: '#444',
-        top: 0,
-        transform: 'translate(0, -50%)',
+    headerText: {
         position: 'absolute',
-        zIndex: 5,
-        boxShadow: '0 3px 12px rgba(0, 0, 0, 0.5)',
+        top: '40%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        [theme.breakpoints.down(1200)]: {
+            top: '50%',
+        },
     },
-    card: {
-        paddingTop: 120,
-        width: 'calc(100% - 50px)',
+    contentPaper: {
+        background: '#999',
+        paddingBottom: 25,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        paddingBottom: 25,
-        marginBotton: 30,
     },
-
-    gamesList: {
-        marginTop: 20,
+    skillsGrid: {
+        marginTop: 13,
         width: '66%',
+        justifyContent: 'center',
+    },
+    skillCard: {
+        padding: 25,
+    },
+    darkBack: {
+        background: '#444',
+        color: '#fff',
+    },
+    titleBar: {
+        background:
+            'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+            'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
     },
     gridList: {
-        width: '100%',
+        width: '66%',
         transform: 'translateZ(0)',
         overflow: 'hidden',
+        borderRadius: 5,
     },
     tileButton: {
         position: 'absolute',
@@ -85,20 +84,6 @@ export default theme => ({
             color: 'rgba(255, 255, 255, 1)',
         },
     },
-    tileItem: {
-        borderRadius: 15,
-        overflow: 'hidden',
-    },
-
-    social: {
-        marginTop: 25,
-        display: 'flex',
-        width: 200,
-        justifyContent: 'space-between',
-    },
-
-    footer: {
-        width: 'calc(100% - 20px)',
-        marginTop: 50,
-    },
 });
+
+export default LandingStyle;
