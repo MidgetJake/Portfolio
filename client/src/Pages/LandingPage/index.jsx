@@ -1,5 +1,6 @@
 import React from 'react';
 import withStyle from '@material-ui/core/styles/withStyles';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 import classnames from 'classnames';
 import LandingStyle from './style';
 
@@ -11,6 +12,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Player from 'react-player';
+import ProjectPopup from 'Components/ProjectPopup';
 
 import TwitterIcon from 'mdi-react/TwitterIcon';
 import GitHubIcon from 'mdi-react/GithubFaceIcon';
@@ -18,60 +20,134 @@ import LinkedInIcon from 'mdi-react/LinkedinIcon';
 
 import BackImage from 'Images/mountainBackground.jpg';
 import Face from 'Images/face.jpg';
-import SnowTrailVideo from 'Videos/snowtrail.mp4';
-import ForcedImg from 'Images/forced.png';
 
-const tiledata = [
-    {
-        img: SnowTrailVideo,
-        title: 'Snow trail shader. Made with Unity',
-        featured: false,
-        video: true,
-        onClick: () => {},
-    },
-    {
-        img: ForcedImg,
-        title: 'Forced',
-        featured: true,
-        video: false,
-        onClick: () => {alert('FORCED');},
-    },
-    {
-        img: ForcedImg,
-        title: 'Forced',
-        featured: true,
-        video: false,
-        onClick: () => {alert('FORCED');},
-    },
-    {
-        img: SnowTrailVideo,
-        title: 'Snow trail shader. Made with Unity',
-        featured: false,
-        video: true,
-        onClick: () => {},
-    },
-    {
-        img: SnowTrailVideo,
-        title: 'Snow trail shader. Made with Unity',
-        featured: false,
-        video: true,
-        onClick: () => {},
-    },
-    {
-        img: ForcedImg,
-        title: 'Forced',
-        featured: true,
-        video: false,
-        onClick: () => {alert('FORCED');},
-    },
-];
+// Forced Images
+import ForcedImg from 'Images/Forced/forced.png';
+import ForcedThumb from 'Images/Forced/ForcedThumbnail.png';
+import ForcedImg1 from 'Images/Forced/ForcedImg1.png'
+import ForcedImg2 from 'Images/Forced/ForcedImg2.png'
+import ForcedImg3 from 'Images/Forced/ForcedImg3.png'
+
+// Only Space Images
+import SpaceThumb from 'Images/OnlySpace/SpaceThumb.png';
+import SpaceFront from 'Images/OnlySpace/FrontImage.png';
+import SpaceImg1 from 'Images/OnlySpace/Img1.png';
+import SpaceImg2 from 'Images/OnlySpace/Img2.png';
+import SpaceImg3 from 'Images/OnlySpace/Img3.png';
+import SpaceImg4 from 'Images/OnlySpace/Img4.png';
+
+// MidgetBot Avatar
+import MidgetBotAvatar from 'Images/MidgetBot/BotFace.png';
+import MidgetBotFront from 'Images/MidgetBot/DiscordIcon.png';
 
 class LandingPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            projectDialog: null,
+            tiledata: [
+                {
+                    img: ForcedImg,
+                    title: 'Forced (GDQ One Mechanic Jam)',
+                    featured: true,
+                    video: false,
+                    onClick: () => {
+                        this.setState({
+                            projectDialog: <ProjectPopup
+                                open={true}
+                                imgSrc={ForcedThumb}
+                                altText={'Forced Avatar'}
+                                title={'Forced - GDQ Game Jam entry'}
+                                desc={'Developed in unity for the July 2018 GDQ one mechanic game jam. '}
+                                github={'https://github.com/MidgetJake/GDQ-One-Mechanic-Jam'}
+                                downloadLink={'https://valesoft.itch.io/forced'}
+                                onClose={() => this.setState({ projectDialog: null }, () => {
+                                    const body = document.body;
+                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
+                                })}
+                                gallery={[
+                                        { imgPath: ForcedImg, },
+                                        { imgPath: ForcedImg1, },
+                                        { imgPath: ForcedImg2, },
+                                        { imgPath: ForcedImg3, },
+                                    ]
+                                }
+                            />
+                        })
+                    },
+                },
+                {
+                    img: SpaceFront,
+                    title: 'Only Space (Ludum Dare 42)',
+                    featured: false,
+                    video: false,
+                    onClick: () => {
+                        this.setState({
+                            projectDialog: <ProjectPopup
+                                open={true}
+                                imgSrc={SpaceThumb}
+                                altText={'Only Space Avatar'}
+                                title={'Only Space - Ludum Dare 42 Jam entry'}
+                                desc={'Created in only 72 hours for Ludum Dare 42. The theme was "Running our of space"'}
+                                github={'https://github.com/MidgetJake/LD-Jam'}
+                                downloadLink={'https://valesoft.itch.io/only-space'}
+                                onClose={() => this.setState({ projectDialog: null }, () => {
+                                    const body = document.body;
+                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
+                                })}
+                                gallery={[
+                                        { imgPath: SpaceFront, },
+                                        { imgPath: SpaceImg1, },
+                                        { imgPath: SpaceImg2, },
+                                        { imgPath: SpaceImg3, },
+                                        { imgPath: SpaceImg4, },
+                                    ]
+                                }
+                            />
+                        })
+                    },
+                },
+                {
+                    img: MidgetBotFront,
+                    title: 'MidgetBot - Discord Bot',
+                    featured: false,
+                    video: false,
+                    onClick: () => {
+                        this.setState({
+                            projectDialog: <ProjectPopup
+                                open={true}
+                                imgSrc={MidgetBotAvatar}
+                                altText={'MidgetBot Avatar'}
+                                title={'MidgetBot - Discord Bot'}
+                                desc={'Created using NodeJS and has a few basic functionalities: AutoMod, Fun Commands, User Points, etc...'}
+                                github={'https://github.com/MidgetJake/MidgetBot'}
+                                // downloadLink={'https://valesoft.itch.io/only-space'}
+                                onClose={() => this.setState({ projectDialog: null }, () => {
+                                    const body = document.body;
+                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
+                                })}
+                                /*gallery={[
+                                        { imgPath: SpaceFront, },
+                                        { imgPath: SpaceImg1, },
+                                        { imgPath: SpaceImg2, },
+                                        { imgPath: SpaceImg3, },
+                                        { imgPath: SpaceImg4, },
+                                    ]
+                                }*/
+                            />
+                        })
+                    },
+                },
+            ],
+        }
+    }
+
     render() {
-        const { classes } = this.props;
+        const { classes, fullScreen } = this.props;
 
         return (
-            <div style={{ overflow: 'hidden', minHeight: '100vh', paddingBottom: 30, }}>
+            <div style={{ overflow: 'hidden', minHeight: '100vh' }}>
                 <div className={classes.header} id={'particles-js'}>
                     <img src={BackImage} className={classes.headerImage}/>
 
@@ -84,14 +160,14 @@ class LandingPage extends React.Component {
                                 Jake Barter
                             </Typography>
                             <Typography variant={'subheading'} align={'center'}>
-                                I make games
+                                I make games & other things
                             </Typography>
                         </div>
 
                         <div className={classes.gamesList}>
-                            <GridList cellHeight={400} spacing={5} className={classes.gridList} cols={3}>
-                                {tiledata.map(tile => (
-                                    <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={1} className={classes.tileItem}>
+                            <GridList cellHeight={400} spacing={fullScreen ? 0 : 5} className={classes.gridList} cols={fullScreen ? 1 : 3}>
+                                {this.state.tiledata.map(tile => (
+                                    <GridListTile key={tile.img} cols={tile.featured ? fullScreen ? 1 : 2 : 1} rows={1} className={classes.tileItem}>
                                         <Button className={classes.tileButton} onClick={tile.onClick}>
                                             {tile.title}
                                         </Button>
@@ -104,6 +180,8 @@ class LandingPage extends React.Component {
                                 ))}
                             </GridList>
                         </div>
+
+                        {this.state.projectDialog}
 
 
                         <div className={classes.social}>
@@ -118,4 +196,4 @@ class LandingPage extends React.Component {
     };
 }
 
-export default withStyle(LandingStyle)(LandingPage);
+export default withMobileDialog()(withStyle(LandingStyle)(LandingPage));

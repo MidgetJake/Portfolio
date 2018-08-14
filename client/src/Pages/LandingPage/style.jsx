@@ -57,12 +57,18 @@ export default theme => ({
         flexDirection: 'column',
         alignItems: 'center',
         paddingBottom: 25,
-        marginBotton: 30,
+        marginBottom: 25,
+        [theme.breakpoints.down('sm')]: {
+            width: 'calc(100% - 20px)',
+        },
     },
 
     gamesList: {
         marginTop: 20,
         width: '66%',
+        [theme.breakpoints.down('sm')]: {
+            width: 'calc(100% - 8px)',
+        },
     },
     gridList: {
         width: '100%',
@@ -88,10 +94,14 @@ export default theme => ({
     tileItem: {
         borderRadius: 15,
         overflow: 'hidden',
+        [theme.breakpoints.down('sm')]: {
+            borderRadius: 4,
+            marginBottom: 5,
+        },
     },
 
     social: {
-        marginTop: 25,
+        marginTop: 20,
         display: 'flex',
         width: 200,
         justifyContent: 'space-between',
