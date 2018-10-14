@@ -8,16 +8,15 @@ module.exports = function(subdomain, subrouter) {
     }
 
     return function (req, res, next) {
-        console.log(req.subdomains);
         const depth = req.subdomains.length || 0;
         if (depth === 0) return next();
 
         let match = true;
         const subdomainSplit = subdomain.split('.');
 
-        for (let level in req.subdomains) {
+        for (let level in subdomainSplit) {
             const expected = subdomainSplit[level];
-            const actual = req.subdomains[level];
+            const actual = req.subdomains[req.subdomains.length - (level + 1)];
 
             if (expected === '*') { continue; }
 
