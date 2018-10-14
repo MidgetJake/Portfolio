@@ -35,7 +35,7 @@ dependencies.resolve(function(main, blog, database) {
         } else {
             const blogRouter = expressRouter();
             blog.setRouting(blogRouter);
-            router.use(subdomain('blog', blogRouter));
+            app.use(subdomain('blog', blogRouter));
         }
 
         app.use(router);
