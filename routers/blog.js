@@ -18,6 +18,7 @@ module.exports = function(pg, passport, User) {
         },
 
         indexPage: function(req, res) {
+            console.log(req.headers.host);
             return res.render('blog/index.ejs', { title: 'Blog | Jake Barter' });
         },
 

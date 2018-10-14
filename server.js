@@ -9,7 +9,7 @@ const passport = require('passport');
 const dependencies = require('./dependencies');
 const path = require('path');
 const http = require('http');
-const subdomain = require('express-subdomain');
+const subdomain = require('./helpers/subdomain');
 const expressRouter = require('express-promise-router');
 
 dependencies.resolve(function(main, blog, database) {
@@ -27,18 +27,17 @@ dependencies.resolve(function(main, blog, database) {
         const server = http.createServer(app);
 
         // Setup Router/Routing
-        const router = expressRouter();
+        app.blog = express.Router();
+        blog.setRouting(app.blog);
+        app.use(subdomain('blog', app.blog));
+
+        const router = express.Router();
         main.setRouting(router);
-
-        const blogRouter = expressRouter();
-        blog.setRouting(blogRouter);
-        app.use(subdomain('blog', blogRouter));
-
         app.use(router);
 
         database.setupDB();
 
-        app.listen(80, function(...args) {
+        server.listen(80, function(...args) {
             console.log('Listening on port 80');
         });
     }
