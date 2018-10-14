@@ -30,19 +30,15 @@ dependencies.resolve(function(main, blog, database) {
         const router = expressRouter();
         main.setRouting(router);
 
-        if (process.env.SYSENV !== 'PROD') {
-            blog.setRouting(router);
-        } else {
-            const blogRouter = expressRouter();
-            blog.setRouting(blogRouter);
-            app.use(subdomain('blog', blogRouter));
-        }
+        const blogRouter = expressRouter();
+        blog.setRouting(blogRouter);
+        app.use(subdomain('blog', blogRouter));
 
         app.use(router);
 
         database.setupDB();
 
-        server.listen(80, function(...args) {
+        app.listen(80, function(...args) {
             console.log('Listening on port 80');
         });
     }
