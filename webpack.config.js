@@ -8,7 +8,8 @@ const config = {
     entry: {
         'landing': path.join(APP_DIR, 'index.jsx'),
         'blog': path.join(APP_DIR, 'blog.jsx'),
-        'blogpost': path.join(APP_DIR, 'blogpost.jsx'),
+        'blogadmin': path.join(APP_DIR, 'blogadmin.jsx'),
+        'blogadminlogin': path.join(APP_DIR, 'blogadminlogin.jsx'),
     },
     mode: 'development',
     output: {
@@ -79,8 +80,13 @@ const config = {
             template: '!!html-loader!client/src/template.ejs',
         }),
         new HtmlWebpackPlugin({
-            chunks: ['blogpost'],
-            filename: 'blog/post.ejs',
+            chunks: ['blogadmin'],
+            filename: 'blog/admin.ejs',
+            template: '!!html-loader!client/src/template.ejs',
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['blogadminlogin'],
+            filename: 'blog/adminlogin.ejs',
             template: '!!html-loader!client/src/template.ejs',
         }),
     ],

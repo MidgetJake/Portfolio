@@ -24,9 +24,9 @@ import Face from 'Images/face.jpg';
 // Forced Images
 import ForcedImg from 'Images/Forced/forced.png';
 import ForcedThumb from 'Images/Forced/ForcedThumbnail.png';
-import ForcedImg1 from 'Images/Forced/ForcedImg1.png'
-import ForcedImg2 from 'Images/Forced/ForcedImg2.png'
-import ForcedImg3 from 'Images/Forced/ForcedImg3.png'
+import ForcedImg1 from 'Images/Forced/ForcedImg1.png';
+import ForcedImg2 from 'Images/Forced/ForcedImg2.png';
+import ForcedImg3 from 'Images/Forced/ForcedImg3.png';
 
 // Only Space Images
 import SpaceThumb from 'Images/OnlySpace/SpaceThumb.png';
@@ -73,8 +73,8 @@ class LandingPage extends React.Component {
                                         { imgPath: ForcedImg3, },
                                     ]
                                 }
-                            />
-                        })
+                            />,
+                        });
                     },
                 },
                 {
@@ -89,7 +89,7 @@ class LandingPage extends React.Component {
                                 imgSrc={SpaceThumb}
                                 altText={'Only Space Avatar'}
                                 title={'Only Space - Ludum Dare 42 Jam entry'}
-                                desc={'Created in only 72 hours for Ludum Dare 42. The theme was "Running our of space"'}
+                                desc={'Created in only 72 hours for Ludum Dare 42. The theme was "Running out of space"'}
                                 github={'https://github.com/MidgetJake/LD-Jam'}
                                 downloadLink={'https://valesoft.itch.io/only-space'}
                                 onClose={() => this.setState({ projectDialog: null }, () => {
@@ -104,8 +104,8 @@ class LandingPage extends React.Component {
                                         { imgPath: SpaceImg4, },
                                     ]
                                 }
-                            />
-                        })
+                            />,
+                        });
                     },
                 },
                 {
@@ -122,7 +122,6 @@ class LandingPage extends React.Component {
                                 title={'MidgetBot - Discord Bot'}
                                 desc={'Created using NodeJS and has a few basic functionalities: AutoMod, Fun Commands, User Points, etc...'}
                                 github={'https://github.com/MidgetJake/MidgetBot'}
-                                // downloadLink={'https://valesoft.itch.io/only-space'}
                                 onClose={() => this.setState({ projectDialog: null }, () => {
                                     const body = document.body;
                                     body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
@@ -135,12 +134,12 @@ class LandingPage extends React.Component {
                                         { imgPath: SpaceImg4, },
                                     ]
                                 }*/
-                            />
-                        })
+                            />,
+                        });
                     },
                 },
             ],
-        }
+        };
     }
 
     render() {

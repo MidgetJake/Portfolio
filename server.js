@@ -12,7 +12,7 @@ const http = require('http');
 const subdomain = require('express-subdomain');
 const expressRouter = require('express-promise-router');
 
-dependencies.resolve(function(main, blog) {
+dependencies.resolve(function(main, blog, database) {
     if (process.env.SYSENV !== 'PROD') {
         process.env.DATABASE_URL = 'postgres://postgres:TestPassword@localhost:5432/portfolio';
         /*process.env.EncryptKey = require('./secret').encrpyt;*/
@@ -28,15 +28,19 @@ dependencies.resolve(function(main, blog) {
 
         // Setup Router/Routing
         const router = expressRouter();
-        const blogRouter = expressRouter();
         main.setRouting(router);
-        blog.setRouting(router);
-        // blog.setRouting(blogRouter);
-        // router.use(subdomain('blog', blogRouter));
-        app.use(router);
-        // app.use(blog);
 
-        //database.setupDB();
+        if (process.env.SYSENV !== 'PROD') {
+            blog.setRouting(router);
+        } else {
+            const blogRouter = expressRouter();
+            blog.setRouting(blogRouter);
+            router.use(subdomain('blog', blogRouter));
+        }
+
+        app.use(router);
+
+        database.setupDB();
 
         server.listen(80, function(...args) {
             console.log('Listening on port 80');
@@ -44,7 +48,7 @@ dependencies.resolve(function(main, blog) {
     }
 
     function configureExpress(app) {
-        //require('./passport/passport-local');
+        require('./passport/passport-local');
 
         app.use(express.static('client/public'));
         app.use(cookieParser());

@@ -20,6 +20,7 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.0.0-beta.43",
+    "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "classnames": "^2.2.5",
@@ -33,6 +34,7 @@
     "express-session": "^1.15.6",
     "express-subdomain": "^1.0.5",
     "express-validator": "^5.1.2",
+    "history": "^4.7.2",
     "lodash": "^4.17.10",
     "mdi-react": "^3.3.0",
     "particles.js": "^2.0.0",
@@ -42,6 +44,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-markdown": "^4.0.3",
     "react-player": "^1.5.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
