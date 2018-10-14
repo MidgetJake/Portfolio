@@ -3,7 +3,6 @@ const path = require('path');
 
 const container = dependable.container();
 const modules = [
-    ['_', 'lodash'],
     ['passport', 'passport'],
     ['fs', 'fs'],
     ['path', 'path'],

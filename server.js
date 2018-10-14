@@ -9,10 +9,12 @@ const passport = require('passport');
 const dependencies = require('./dependencies');
 const path = require('path');
 const http = require('http');
+const subdomain = require('express-subdomain');
+const expressRouter = require('express-promise-router');
 
-dependencies.resolve(function(_, main) {
+dependencies.resolve(function(main, blog) {
     if (process.env.SYSENV !== 'PROD') {
-        process.env.DATABASE_URL = 'postgres://uka-main:secretpass@localhost:5432/uka';
+        process.env.DATABASE_URL = 'postgres://postgres:TestPassword@localhost:5432/portfolio';
         /*process.env.EncryptKey = require('./secret').encrpyt;*/
     }
 
@@ -25,9 +27,14 @@ dependencies.resolve(function(_, main) {
         const server = http.createServer(app);
 
         // Setup Router/Routing
-        const router = require('express-promise-router')();
+        const router = expressRouter();
+        const blogRouter = expressRouter();
         main.setRouting(router);
+        blog.setRouting(router);
+        // blog.setRouting(blogRouter);
+        // router.use(subdomain('blog', blogRouter));
         app.use(router);
+        // app.use(blog);
 
         //database.setupDB();
 
@@ -56,7 +63,6 @@ dependencies.resolve(function(_, main) {
         app.use(flash());
         app.use(passport.initialize());
         app.use(passport.session());
-        app.locals._ = _;
     }
 
 });

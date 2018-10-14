@@ -6,12 +6,14 @@ const APP_DIR = path.resolve(__dirname, 'client/src');
 
 const config = {
     entry: {
-        'index': path.join(APP_DIR, 'index.jsx'),
+        'landing': path.join(APP_DIR, 'index.jsx'),
+        'blog': path.join(APP_DIR, 'blog.jsx'),
+        'blogpost': path.join(APP_DIR, 'blogpost.jsx'),
     },
     mode: 'development',
     output: {
         path: BUILD_DIR,
-        filename: '[name]/js/bundle.js',
+        filename: 'js/bundle_[name].js',
     },
     resolve: {
         modules: ['node_modules', APP_DIR],
@@ -67,8 +69,18 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            chunks: ['index'],
-            filename: 'index/index.ejs',
+            chunks: ['landing'],
+            filename: 'landing/index.ejs',
+            template: '!!html-loader!client/src/template.ejs',
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['blog'],
+            filename: 'blog/index.ejs',
+            template: '!!html-loader!client/src/template.ejs',
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['blogpost'],
+            filename: 'blog/post.ejs',
             template: '!!html-loader!client/src/template.ejs',
         }),
     ],
