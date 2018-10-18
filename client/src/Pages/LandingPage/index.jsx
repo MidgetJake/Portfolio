@@ -40,6 +40,12 @@ import SpaceImg4 from 'Images/OnlySpace/Img4.png';
 import MidgetBotAvatar from 'Images/MidgetBot/BotFace.png';
 import MidgetBotFront from 'Images/MidgetBot/DiscordIcon.png';
 
+// PC Remote Images
+import PCRFront from 'Images/PCRemote/FrontImage.png';
+import PCRImg1 from 'Images/PCRemote/ConnectScreen.png';
+import PCRImg2 from 'Images/PCRemote/MacroScreen.png';
+import PCRImg3 from 'Images/PCRemote/Drawer.png';
+
 class LandingPage extends React.Component {
     constructor(props) {
         super(props);
@@ -78,37 +84,6 @@ class LandingPage extends React.Component {
                     },
                 },
                 {
-                    img: SpaceFront,
-                    title: 'Only Space (Ludum Dare 42)',
-                    featured: false,
-                    video: false,
-                    onClick: () => {
-                        this.setState({
-                            projectDialog: <ProjectPopup
-                                open={true}
-                                imgSrc={SpaceThumb}
-                                altText={'Only Space Avatar'}
-                                title={'Only Space - Ludum Dare 42 Jam entry'}
-                                desc={'Created in only 72 hours for Ludum Dare 42. The theme was "Running out of space"'}
-                                github={'https://github.com/MidgetJake/LD-Jam'}
-                                downloadLink={'https://valesoft.itch.io/only-space'}
-                                onClose={() => this.setState({ projectDialog: null }, () => {
-                                    const body = document.body;
-                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
-                                })}
-                                gallery={[
-                                        { imgPath: SpaceFront, },
-                                        { imgPath: SpaceImg1, },
-                                        { imgPath: SpaceImg2, },
-                                        { imgPath: SpaceImg3, },
-                                        { imgPath: SpaceImg4, },
-                                    ]
-                                }
-                            />,
-                        });
-                    },
-                },
-                {
                     img: MidgetBotFront,
                     title: 'MidgetBot - Discord Bot',
                     featured: false,
@@ -126,14 +101,64 @@ class LandingPage extends React.Component {
                                     const body = document.body;
                                     body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
                                 })}
-                                /*gallery={[
-                                        { imgPath: SpaceFront, },
-                                        { imgPath: SpaceImg1, },
-                                        { imgPath: SpaceImg2, },
-                                        { imgPath: SpaceImg3, },
-                                        { imgPath: SpaceImg4, },
-                                    ]
-                                }*/
+                            />,
+                        });
+                    },
+                },
+                {
+                    img: PCRFront,
+                    title: 'PC Remote',
+                    featured: false,
+                    video: false,
+                    onClick: () => {
+                        this.setState({
+                            projectDialog: <ProjectPopup
+                                open={true}
+                                imgSrc={MidgetBotAvatar}
+                                altText={'MidgetBot Avatar'}
+                                title={'PC Remote'}
+                                desc={'Created out of the need to control videos and applications from my bed, the app allows users to connect to a windows device and create custom macros that can be ran on the PC from a mobile device. Developed with Electron for the Desktop app and React-Native for the mobile app.'}
+                                github={'https://github.com/MidgetJake/PC-Remote'}
+                                onClose={() => this.setState({ projectDialog: null }, () => {
+                                    const body = document.body;
+                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
+                                })}
+                                gallery={[
+                                    { imgPath: PCRImg1, },
+                                    { imgPath: PCRImg2, },
+                                    { imgPath: PCRImg3, },
+                                ]}
+                            />,
+                        });
+                    },
+                },
+                {
+                    img: SpaceFront,
+                    title: 'Only Space (Ludum Dare 42)',
+                    featured: true,
+                    video: false,
+                    onClick: () => {
+                        this.setState({
+                            projectDialog: <ProjectPopup
+                                open={true}
+                                imgSrc={SpaceThumb}
+                                altText={'Only Space Avatar'}
+                                title={'Only Space - Ludum Dare 42 Jam entry'}
+                                desc={'Created in only 72 hours for Ludum Dare 42. The theme was "Running out of space"'}
+                                github={'https://github.com/MidgetJake/LD-Jam'}
+                                downloadLink={'https://valesoft.itch.io/only-space'}
+                                onClose={() => this.setState({ projectDialog: null }, () => {
+                                    const body = document.body;
+                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
+                                })}
+                                gallery={[
+                                    { imgPath: SpaceFront, },
+                                    { imgPath: SpaceImg1, },
+                                    { imgPath: SpaceImg2, },
+                                    { imgPath: SpaceImg3, },
+                                    { imgPath: SpaceImg4, },
+                                ]
+                                }
                             />,
                         });
                     },
