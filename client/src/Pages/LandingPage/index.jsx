@@ -46,6 +46,12 @@ import PCRImg1 from 'Images/PCRemote/ConnectScreen.png';
 import PCRImg2 from 'Images/PCRemote/MacroScreen.png';
 import PCRImg3 from 'Images/PCRemote/Drawer.png';
 
+// One Night Images
+import ONImg1 from 'Images/OneNight/DarkCreate.png';
+import ONImg2 from 'Images/OneNight/DarkTurn.png';
+import ONImg3 from 'Images/OneNight/ViewRole.png';
+import ONImg4 from 'Images/OneNight/WhiteWin.png';
+
 class LandingPage extends React.Component {
     constructor(props) {
         super(props);
@@ -159,6 +165,34 @@ class LandingPage extends React.Component {
                                     { imgPath: SpaceImg4, },
                                 ]
                                 }
+                            />,
+                        });
+                    },
+                },
+                {
+                    img: ONImg1,
+                    title: 'One Night Online',
+                    featured: false,
+                    video: false,
+                    onClick: () => {
+                        this.setState({
+                            projectDialog: <ProjectPopup
+                                open={true}
+                                imgSrc={MidgetBotAvatar}
+                                altText={'One Night'}
+                                title={'One Night Online'}
+                                desc={'An online version of the card game "One Night Ultimate Werewolves". Built using a NodeJS back-end, React front-end & using WebSockets'}
+                                downloadLink={'https://werewolves.jakebarter.co.uk/lobby'}
+                                onClose={() => this.setState({ projectDialog: null }, () => {
+                                    const body = document.body;
+                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
+                                })}
+                                gallery={[
+                                    { imgPath: ONImg1, },
+                                    { imgPath: ONImg2, },
+                                    { imgPath: ONImg3, },
+                                    { imgPath: ONImg4, },
+                                ]}
                             />,
                         });
                     },
