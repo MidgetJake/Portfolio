@@ -12,49 +12,52 @@ import GridListTile from '@material-ui/core/GridListTile';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Player from 'react-player';
-import ProjectPopup from 'Components/ProjectPopup';
+import ProjectPopup from '../../Components/ProjectPopup';
 
 import TwitterIcon from 'mdi-react/TwitterIcon';
 import GitHubIcon from 'mdi-react/GithubFaceIcon';
 import LinkedInIcon from 'mdi-react/LinkedinIcon';
 
-import BackImage from 'Images/mountainBackground.jpg';
-import Face from 'Images/face.jpg';
+import BackImage from '../../Images/mountainBackground.jpg';
+import Face from '../../Images/face.jpg';
 
 // Forced Images
-import ForcedImg from 'Images/Forced/forced.png';
-import ForcedThumb from 'Images/Forced/ForcedThumbnail.png';
-import ForcedImg1 from 'Images/Forced/ForcedImg1.png';
-import ForcedImg2 from 'Images/Forced/ForcedImg2.png';
-import ForcedImg3 from 'Images/Forced/ForcedImg3.png';
+import ForcedImg from '../../Images/Forced/forced.png';
+import ForcedThumb from '../../Images/Forced/ForcedThumbnail.png';
+import ForcedImg1 from '../../Images/Forced/ForcedImg1.png';
+import ForcedImg2 from '../../Images/Forced/ForcedImg2.png';
+import ForcedImg3 from '../../Images/Forced/ForcedImg3.png';
 
 // Only Space Images
-import SpaceThumb from 'Images/OnlySpace/SpaceThumb.png';
-import SpaceFront from 'Images/OnlySpace/FrontImage.png';
-import SpaceImg1 from 'Images/OnlySpace/Img1.png';
-import SpaceImg2 from 'Images/OnlySpace/Img2.png';
-import SpaceImg3 from 'Images/OnlySpace/Img3.png';
-import SpaceImg4 from 'Images/OnlySpace/Img4.png';
+import SpaceThumb from '../../Images/OnlySpace/SpaceThumb.png';
+import SpaceFront from '../../Images/OnlySpace/FrontImage.png';
+import SpaceImg1 from '../../Images/OnlySpace/Img1.png';
+import SpaceImg2 from '../../Images/OnlySpace/Img2.png';
+import SpaceImg3 from '../../Images/OnlySpace/Img3.png';
+import SpaceImg4 from '../../Images/OnlySpace/Img4.png';
 
 // MidgetBot Avatar
-import MidgetBotAvatar from 'Images/MidgetBot/BotFace.png';
-import MidgetBotFront from 'Images/MidgetBot/DiscordIcon.png';
+import MidgetBotAvatar from '../../Images/MidgetBot/BotFace.png';
+import MidgetBotFront from '../../Images/MidgetBot/DiscordIcon.png';
 
 // PC Remote Images
-import PCRFront from 'Images/PCRemote/FrontImage.png';
-import PCRImg1 from 'Images/PCRemote/ConnectScreen.png';
-import PCRImg2 from 'Images/PCRemote/MacroScreen.png';
-import PCRImg3 from 'Images/PCRemote/Drawer.png';
+import PCRFront from '../../Images/PCRemote/FrontImage.png';
+import PCRImg1 from '../../Images/PCRemote/ConnectScreen.png';
+import PCRImg2 from '../../Images/PCRemote/MacroScreen.png';
+import PCRImg3 from '../../Images/PCRemote/Drawer.png';
 
 // One Night Images
-import ONImg1 from 'Images/OneNight/DarkCreate.png';
-import ONImg2 from 'Images/OneNight/DarkTurn.png';
-import ONImg3 from 'Images/OneNight/ViewRole.png';
-import ONImg4 from 'Images/OneNight/WhiteWin.png';
+import ONImg1 from '../../Images/OneNight/DarkCreate.png';
+import ONImg2 from '../../Images/OneNight/DarkTurn.png';
+import ONImg3 from '../../Images/OneNight/ViewRole.png';
+import ONImg4 from '../../Images/OneNight/WhiteWin.png';
 
 class LandingPage extends React.Component {
     constructor(props) {
         super(props);
+
+        const body = document.body;
+        body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
 
         this.state = {
             projectDialog: null,
@@ -75,7 +78,6 @@ class LandingPage extends React.Component {
                                 github={'https://github.com/MidgetJake/GDQ-One-Mechanic-Jam'}
                                 downloadLink={'https://valesoft.itch.io/forced'}
                                 onClose={() => this.setState({ projectDialog: null }, () => {
-                                    const body = document.body;
                                     body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
                                 })}
                                 gallery={[
@@ -104,7 +106,6 @@ class LandingPage extends React.Component {
                                 desc={'Created using NodeJS and has a few basic functionalities: AutoMod, Fun Commands, User Points, etc...'}
                                 github={'https://github.com/MidgetJake/MidgetBot'}
                                 onClose={() => this.setState({ projectDialog: null }, () => {
-                                    const body = document.body;
                                     body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
                                 })}
                             />,
@@ -126,7 +127,6 @@ class LandingPage extends React.Component {
                                 desc={'Created out of the need to control videos and applications from my bed, the app allows users to connect to a windows device and create custom macros that can be ran on the PC from a mobile device. Developed with Electron for the Desktop app and React-Native for the mobile app.'}
                                 github={'https://github.com/MidgetJake/PC-Remote'}
                                 onClose={() => this.setState({ projectDialog: null }, () => {
-                                    const body = document.body;
                                     body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
                                 })}
                                 gallery={[
@@ -154,7 +154,6 @@ class LandingPage extends React.Component {
                                 github={'https://github.com/MidgetJake/LD-Jam'}
                                 downloadLink={'https://valesoft.itch.io/only-space'}
                                 onClose={() => this.setState({ projectDialog: null }, () => {
-                                    const body = document.body;
                                     body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
                                 })}
                                 gallery={[
@@ -184,7 +183,6 @@ class LandingPage extends React.Component {
                                 desc={'An online version of the card game "One Night Ultimate Werewolves". Built using a NodeJS back-end, React front-end & using WebSockets'}
                                 downloadLink={'https://werewolves.jakebarter.co.uk/lobby'}
                                 onClose={() => this.setState({ projectDialog: null }, () => {
-                                    const body = document.body;
                                     body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
                                 })}
                                 gallery={[

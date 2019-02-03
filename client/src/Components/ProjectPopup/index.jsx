@@ -1,6 +1,6 @@
 import React from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
-import withMobileDialog from "@material-ui/core/withMobileDialog";
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 import style from './style';
 
 import Card from '@material-ui/core/Card';
@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import Carousel from 'Components/Carousel';
+import Carousel from '../Carousel';
 
 import GitHubIcon from 'mdi-react/GithubFaceIcon';
 import DownloadIcon from 'mdi-react/DownloadIcon';

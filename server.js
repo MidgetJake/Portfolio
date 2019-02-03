@@ -11,6 +11,10 @@ const path = require('path');
 const http = require('http');
 const subdomain = require('./helpers/subdomain');
 const expressRouter = require('express-promise-router');
+const next = require('next');
+
+const app = next({ dev: true });
+const handle = app.getRequestHandler();
 
 dependencies.resolve(function(main, blog, database) {
     if (process.env.SYSENV !== 'PROD') {
@@ -18,7 +22,9 @@ dependencies.resolve(function(main, blog, database) {
         /*process.env.EncryptKey = require('./secret').encrpyt;*/
     }
 
-    SetupExpress();
+    app.prepare().then(() => {
+        SetupExpress();
+    });
 
     function SetupExpress() {
         const app = express();
@@ -27,15 +33,15 @@ dependencies.resolve(function(main, blog, database) {
         const server = http.createServer(app);
 
         // Setup Router/Routing
-        app.blog = express.Router();
-        blog.setRouting(app.blog);
-        app.use(subdomain('blog', app.blog));
+        //app.blog = express.Router();
+        //blog.setRouting(app.blog);
+        //app.use(subdomain('blog', app.blog));
 
         const router = express.Router();
-        main.setRouting(router);
+        main.setRouting(router, handle);
         app.use(router);
 
-        database.setupDB();
+        //database.setupDB();
 
         server.listen(80, function(...args) {
             console.log('Listening on port 80');
