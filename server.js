@@ -13,7 +13,7 @@ const subdomain = require('./helpers/subdomain');
 const expressRouter = require('express-promise-router');
 const next = require('next');
 
-const app = next({ dev: true });
+const app = next({ dev: false });
 const handle = app.getRequestHandler();
 
 dependencies.resolve(function(main, blog, database) {

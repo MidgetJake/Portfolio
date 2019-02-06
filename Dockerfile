@@ -1,13 +1,17 @@
 FROM node:9
-ADD package.json /tmp/package.json
-RUN cd /tmp && npm i && npm i -g webpack webpack-cli
-RUN mkdir -p /src && cp -a /tmp/node_modules /src/
+RUN mkdir -p /src
+ADD package.json /src/package.json
+#RUN mkdir -p /src
+RUN cd /src && npm i
+#RUN mkdir -p /src && mv /tmp/node_modules /src/
 
 WORKDIR /src
 ADD . /src
 
-RUN webpack
+#RUN npm run build
+#RUN webpack
 
 EXPOSE 8080
 CMD ["node", "/src/server.js"]
+
 
