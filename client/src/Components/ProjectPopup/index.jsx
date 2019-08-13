@@ -3,7 +3,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import style from './style';
 
-import Card from '@material-ui/core/Card';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import Avatar from '@material-ui/core/Avatar';
@@ -18,15 +17,16 @@ import CloseIcon from 'mdi-react/CloseIcon';
 class ProjectPopup extends React.Component {
     constructor(props) {
         super(props);
+        console.log('Loaded');
 
         this.state = {
-            open: this.props.open || false,
-        }
+            open: this.props.open || true,
+        };
     }
 
-    componentWillReceiveProps(props) {
-        this.setState({ open: props.open });
-    }
+    // componentWillReceiveProps(props) {
+        //this.setState({ open: props.open });
+    // }
 
     handleClose = () => {
         this.setState({ open: false });

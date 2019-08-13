@@ -1,13 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from 'mdi-react/KeyboardArrowLeftIcon';
 import KeyboardArrowRight from 'mdi-react/KeyboardArrowRightIcon';
-import SwipeableViews from './SwipeView';
+import Slider from 'react-slick';
 import style from './style';
 
 class SwipeableTextMobileStepper extends React.Component {
@@ -24,6 +21,7 @@ class SwipeableTextMobileStepper extends React.Component {
         this.state = {
             activeStep: 0,
         };
+        this.slider = null;
     }
 
     handleNext = () => {
@@ -35,23 +33,25 @@ class SwipeableTextMobileStepper extends React.Component {
 
         this.setState(prevState => {
             let nextStep = prevState.activeStep + 1;
-            if(prevState.activeStep + 1 === this.props.gallery.length) {
+            if (prevState.activeStep + 1 === this.props.gallery.length) {
                 nextStep = 0;
             }
 
+            this.slider.slickGoTo(nextStep);
             return {
                 activeStep: nextStep,
-            }
+            };
         });
     };
 
     handleBack = () => {
         this.setState(prevState => {
             let nextStep = prevState.activeStep - 1;
-            if(prevState.activeStep - 1 === -1) {
+            if (prevState.activeStep - 1 === -1) {
                 nextStep = this.props.gallery.length;
             }
 
+            this.slider.slickGoTo(nextStep);
             return {
                 activeStep: nextStep,
             }
@@ -71,23 +71,32 @@ class SwipeableTextMobileStepper extends React.Component {
                 {/*<Paper square elevation={0} className={classes.header}>
                     <Typography>{tutorialSteps[activeStep].label}</Typography>
                 </Paper>*/}
-                <SwipeableViews
-                    axis={'x'}
-                    index={this.state.activeStep}
-                    onChangeIndex={this.handleStepChange}
-                    enableMouseEvents
-                    slideClassName={classes.container}
-                    containerStyle={classes.container}
+                <Slider
+                    ref={slider => this.slider = slider}
+                    settings={{
+                        dots: false,
+                        // index={this.state.activeStep}
+                        // onChangeIndex={this.handleStepChange}
+                        // enableMouseEvents
+                        // slideClassName={classes.container}
+                        // containerStyle={classes.container}
+                        className: classes.container,
+                        customPaging: null,
+                        afterChange: this.handleStepChange,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    }}
                 >
                     {gallery.map(step => (
                         <img key={step.label} className={classes.img} src={step.imgPath} alt={step.label} />
                     ))}
-                </SwipeableViews>
-                <MobileStepper
+                </Slider>
+                {/*<MobileStepper
                     steps={gallery.length}
                     position="static"
                     activeStep={activeStep}
                     className={classes.mobileStepper}
+                    variant={'text'}
                     nextButton={
                         <Button size="small" onClick={this.handleNext}>
                             Next
@@ -100,16 +109,10 @@ class SwipeableTextMobileStepper extends React.Component {
                             Back
                         </Button>
                     }
-                />
+                />*/}
             </div>
         );
     }
 }
-
-/*SwipeableTextMobileStepper.propTypes = {
-    classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired,
-    gallery: PropTypes.array(),
-};*/
 
 export default withStyles(style)(SwipeableTextMobileStepper);

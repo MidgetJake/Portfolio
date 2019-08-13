@@ -52,12 +52,17 @@ import ONImg2 from '../../Images/OneNight/DarkTurn.png';
 import ONImg3 from '../../Images/OneNight/ViewRole.png';
 import ONImg4 from '../../Images/OneNight/WhiteWin.png';
 
+// Memewars Images
+import MWIcon from '../../Images/Memewars/MW-Icon.png';
+import MWPage1 from '../../Images/Memewars/MWPage1.png';
+import MWPage2 from '../../Images/Memewars/MWPage2.png';
+
 class LandingPage extends React.Component {
     constructor(props) {
         super(props);
 
-        const body = document.body;
-        body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
+        // const body = document.body;
+        // body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
 
         this.state = {
             projectDialog: null,
@@ -77,9 +82,7 @@ class LandingPage extends React.Component {
                                 desc={'Developed in unity for the July 2018 GDQ one mechanic game jam. '}
                                 github={'https://github.com/MidgetJake/GDQ-One-Mechanic-Jam'}
                                 downloadLink={'https://valesoft.itch.io/forced'}
-                                onClose={() => this.setState({ projectDialog: null }, () => {
-                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
-                                })}
+                                onClose={() => this.setState({ projectDialog: null })}
                                 gallery={[
                                         { imgPath: ForcedImg, },
                                         { imgPath: ForcedImg1, },
@@ -105,9 +108,7 @@ class LandingPage extends React.Component {
                                 title={'MidgetBot - Discord Bot'}
                                 desc={'Created using NodeJS and has a few basic functionalities: AutoMod, Fun Commands, User Points, etc...'}
                                 github={'https://github.com/MidgetJake/MidgetBot'}
-                                onClose={() => this.setState({ projectDialog: null }, () => {
-                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
-                                })}
+                                onClose={() => this.setState({ projectDialog: null })}
                             />,
                         });
                     },
@@ -126,9 +127,7 @@ class LandingPage extends React.Component {
                                 title={'PC Remote'}
                                 desc={'Created out of the need to control videos and applications from my bed, the app allows users to connect to a windows device and create custom macros that can be ran on the PC from a mobile device. Developed with Electron for the Desktop app and React-Native for the mobile app.'}
                                 github={'https://github.com/MidgetJake/PC-Remote'}
-                                onClose={() => this.setState({ projectDialog: null }, () => {
-                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
-                                })}
+                                onClose={() => this.setState({ projectDialog: null })}
                                 gallery={[
                                     { imgPath: PCRImg1, },
                                     { imgPath: PCRImg2, },
@@ -153,9 +152,7 @@ class LandingPage extends React.Component {
                                 desc={'Created in only 72 hours for Ludum Dare 42. The theme was "Running out of space"'}
                                 github={'https://github.com/MidgetJake/LD-Jam'}
                                 downloadLink={'https://valesoft.itch.io/only-space'}
-                                onClose={() => this.setState({ projectDialog: null }, () => {
-                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
-                                })}
+                                onClose={() => this.setState({ projectDialog: null })}
                                 gallery={[
                                     { imgPath: SpaceFront, },
                                     { imgPath: SpaceImg1, },
@@ -182,14 +179,37 @@ class LandingPage extends React.Component {
                                 title={'One Night Online'}
                                 desc={'An online version of the card game "One Night Ultimate Werewolves". Built using a NodeJS back-end, React front-end & using WebSockets'}
                                 downloadLink={'https://werewolves.jakebarter.co.uk/lobby'}
-                                onClose={() => this.setState({ projectDialog: null }, () => {
-                                    body.style = 'padding: 0; margin: 0; width:100vw; overflow-x: hidden;';
-                                })}
+                                onClose={() => this.setState({ projectDialog: null })}
                                 gallery={[
                                     { imgPath: ONImg1, },
                                     { imgPath: ONImg2, },
                                     { imgPath: ONImg3, },
                                     { imgPath: ONImg4, },
+                                ]}
+                            />,
+                        });
+                    },
+                },
+                {
+                    img: MWIcon,
+                    title: 'Memewars',
+                    featured: false,
+                    video: false,
+                    onClick: () => {
+                        this.setState({
+                            projectDialog: <ProjectPopup
+                                open={true}
+                                imgSrc={MWIcon}
+                                altText={'Memewars'}
+                                title={'Memewars'}
+                                desc={'A realtime site developed for CraftingVegeto to allow his viewers to request' +
+                                      ' youtube videos in his stream chat. These videos would then be listed on the ' +
+                                      'side for him to watch and rate'}
+                                downloadLink={'https://memewars.jakebarter.co.uk/'}
+                                onClose={() => this.setState({ projectDialog: null })}
+                                gallery={[
+                                    { imgPath: MWPage1, },
+                                    { imgPath: MWPage2, },
                                 ]}
                             />,
                         });
@@ -206,7 +226,6 @@ class LandingPage extends React.Component {
             <div style={{ overflow: 'hidden', minHeight: '100vh' }}>
                 <div className={classes.header} id={'particles-js'}>
                     <img src={BackImage} className={classes.headerImage}/>
-
                 </div>
                 <div className={classes.content}>
                     <Avatar className={classes.avatar} src={Face} alt={'Picture of me'}/>

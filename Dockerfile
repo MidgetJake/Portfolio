@@ -8,7 +8,7 @@ RUN cd /src && npm i
 WORKDIR /src
 ADD . /src
 
-#RUN npm run build
+RUN npm run build
 #RUN webpack
 
 EXPOSE 8080

@@ -20,6 +20,7 @@ export default theme => ({
     dialog: {
         display: 'flex',
         flexDirection: 'column',
+        overflowX: 'hidden',
     },
     close: {
         width: 'calc(100% - 10px)',
